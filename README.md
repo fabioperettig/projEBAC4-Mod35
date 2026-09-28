@@ -10,6 +10,10 @@ baseado no repositório [projEBAC3-Mod30](https://github.com/fabioperettig/projE
 
 # EM CONSTRUÇÃO 🚧
 
+☑️ Implementada mudança de estrutura `ConnectionFactory` para `EntityManagerFactory`;<br>
+☑️ Classe cliente refatorada para **Jakarta Persistence** `@Entity`;<br>
+☑️ IGenericDao<T,ID> e GenericDao refatorado com Injeção de Dependência aplicada;<br>
+
 ----
 
 ### Fabio peretti Guimarães | Ebac mod 35 | OUT 2026

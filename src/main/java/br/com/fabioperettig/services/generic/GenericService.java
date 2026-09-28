@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.util.Collection;
 
 import br.com.fabioperettig.dao.Persistente;
-import br.com.fabioperettig.dao.generic.IGenericDAO;
+import br.com.fabioperettig.dao.generic.IGenericDao;
 import br.com.fabioperettig.exceptions.DAOException;
 import br.com.fabioperettig.exceptions.MaisDeUmRegistroException;
 import br.com.fabioperettig.exceptions.TableException;
@@ -13,9 +13,9 @@ import br.com.fabioperettig.exceptions.TipoChaveNaoEncontradaException;
 public abstract class GenericService<T extends Persistente, E extends Serializable> 
 	implements IGenericService<T, E> {
 	
-	protected IGenericDAO<T,E> dao;
+	protected IGenericDao<T,E> dao;
 	
-	public GenericService(IGenericDAO<T,E> dao) {
+	public GenericService(IGenericDao<T,E> dao) {
 		this.dao = dao;
 	}
 
