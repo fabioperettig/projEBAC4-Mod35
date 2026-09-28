@@ -10,9 +10,11 @@ import anotacao.ColunaTabela;
 import anotacao.Tabela;
 import anotacao.TipoChave;
 import br.com.fabioperettig.dao.Persistente;
+import jakarta.persistence.*;
 
-@Tabela("TB_VENDA")
-public class Venda implements Persistente {
+@Entity
+@Table(name = "TB_VENDA")
+public class Venda {
 	
 	public enum Status {
 		INICIADA, CONCLUIDA, CANCELADA;
@@ -26,53 +28,42 @@ public class Venda implements Persistente {
 			return null;
 		}
 	}
-	
-	@ColunaTabela(dbName = "id", setJavaName = "setId")
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "venda_seq")
+	@SequenceGenerator(name = "venda_seq", sequenceName = "sq_venda", initialValue = 1, allocationSize = 1)
 	private Long id;
 
-	@TipoChave("getCodigo")
-	@ColunaTabela(dbName = "codigo", setJavaName = "setCodigo")
+	@Column(name = "CODIGO", nullable = false, unique = true)
 	private String codigo;
 	
-	@ColunaTabela(dbName = "id_cliente_fk", setJavaName = "setIdClienteFk")
+	@ManyToOne
+	@JoinColumn(
+			name = "id_cliente_fk",
+			foreignKey = @ForeignKey(name = "fk_venda-cliente"),
+			referencedColumnName = "id", nullable = false
+	)
 	private Cliente cliente;
 	
-	//@ColunaTabela(dbName = "id", setJavaName = "setId")
+	@OneToMany(mappedBy = "venda", cascade = CascadeType.ALL)
 	private Set<ProdutoQuantidade> produtos;
 	
-	@ColunaTabela(dbName = "valor_total", setJavaName = "setValorTotal")
+	@Column(name = "VALOR_TOTAL", nullable = false)
 	private BigDecimal valorTotal;
 	
-	@ColunaTabela(dbName = "data_venda", setJavaName = "setDataVenda")
+	@Column(name = "DATA_VENDA", nullable = false)
 	private Instant dataVenda;
-	
-	@ColunaTabela(dbName = "status_venda", setJavaName = "setStatus")
+
+	@Enumerated(EnumType.STRING)
+	@Column(name = "STATUS_VENDA", nullable = false)
 	private Status status;
-	
+
+
 	public Venda() {
 		produtos = new HashSet<>();
 	}
 
-	public String getCodigo() {
-		return codigo;
-	}
-
-	public void setCodigo(String codigo) {
-		this.codigo = codigo;
-	}
-
-	public Cliente getCliente() {
-		return cliente;
-	}
-
-	public void setCliente(Cliente cliente) {
-		this.cliente = cliente;
-	}
-
-	public Set<ProdutoQuantidade> getProdutos() {
-		return produtos;
-	}
-
+	///métodos dedicados
 	public void adicionarProduto(Produto produto, Integer quantidade) {
 		validarStatus();
 		Optional<ProdutoQuantidade> op = produtos.stream()
@@ -83,6 +74,7 @@ public class Venda implements Persistente {
 			ProdutoQuantidade produtpQtd = op.get();
 			produtpQtd.adicionar(quantidade);
 		} else {
+			///criar factory para produtoQuantidade
 			ProdutoQuantidade prod = new ProdutoQuantidade();
 			prod.setProduto(produto);
 			prod.adicionar(quantidade);
@@ -139,38 +131,43 @@ public class Venda implements Persistente {
 		this.valorTotal = valorTotal;
 	}
 
+	///getter_setter
+	public String getCodigo() {
+		return codigo;
+	}
+	public void setCodigo(String codigo) {
+		this.codigo = codigo;
+	}
+	public Cliente getCliente() {
+		return cliente;
+	}
+	public void setCliente(Cliente cliente) {
+		this.cliente = cliente;
+	}
+	public Set<ProdutoQuantidade> getProdutos() {
+		return produtos;
+	}
 	public BigDecimal getValorTotal() {
 		return valorTotal;
 	}
-
 	public Instant getDataVenda() {
 		return dataVenda;
 	}
-
 	public void setDataVenda(Instant dataVenda) {
 		this.dataVenda = dataVenda;
 	}
-
 	public Status getStatus() {
 		return status;
 	}
-
 	public void setStatus(Status status) {
 		this.status = status;
 	}
-
 	public Long getId() {
 		return id;
 	}
-
-	public void setId(Long id) {
-		this.id = id;
-	}
-
 	public void setValorTotal(BigDecimal valorTotal) {
 		this.valorTotal = valorTotal;
 	}
-
 	public void setProdutos(Set<ProdutoQuantidade> produtos) {
 		this.produtos = produtos;
 	}

@@ -1,11 +1,10 @@
 package br.com.fabioperettig.domain;
 
-import br.com.fabioperettig.dao.Persistente;
 import jakarta.persistence.*;
 
 @Entity
 @Table(name= "TB_CLIENTE")
-public class Cliente implements Persistente {
+public class Cliente {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "cliente_seq")
@@ -32,7 +31,8 @@ public class Cliente implements Persistente {
 
 	@Column(name = "ESTADO", nullable = false)
     private String estado;
-    
+
+	///getter_setter
 	public String getNome() {
 		return nome;
 	}

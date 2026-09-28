@@ -1,42 +1,33 @@
 package br.com.fabioperettig.domain;
 
 import java.math.BigDecimal;
+import jakarta.persistence.*;
 
-import anotacao.ColunaTabela;
-import anotacao.Tabela;
-import anotacao.TipoChave;
-import br.com.fabioperettig.dao.Persistente;
+@Entity
+@Table(name = "TB_PRODUTO")
+public class Produto {
 
-@Tabela("TB_PRODUTO")
-public class Produto implements Persistente {
-	@ColunaTabela(dbName = "cupom_15_off", setJavaName = "setCupom15Off")
-	private Boolean cupom15Off = false;
-
-	public Boolean getCupom15Off() {
-		return cupom15Off;
-	}
-
-	public void setCupom15Off(Boolean valor) {
-		this.cupom15Off = java.util.Objects.requireNonNull(valor);
-	}
-
-	
-	@ColunaTabela(dbName = "id", setJavaName = "setId")
+	@Id
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "produto_seq")
+	@SequenceGenerator(name = "produto_seq", sequenceName = "sq_produto", initialValue = 1, allocationSize = 1)
 	private Long id;
 
-	@TipoChave("getCodigo")
-	@ColunaTabela(dbName = "codigo", setJavaName = "setCodigo")
+	@Column(name = "CODIGO", nullable = false, unique = true)
 	private String codigo;
 	
-	@ColunaTabela(dbName = "nome", setJavaName = "setNome")
+	@Column(name = "NOME")
 	private String nome;
 	
-	@ColunaTabela(dbName = "descricao", setJavaName = "setDescricao")
+	@Column(name = "DESCRICAO")
 	private String descricao;
 	
-	@ColunaTabela(dbName = "valor", setJavaName = "setValor")
+	@Column(name = "VALOR")
 	private BigDecimal valor;
 
+	@Column(name = "CUPOM")
+	private Boolean cupom15Off = false;
+
+	///getter_setter
 	public String getCodigo() {
 		return codigo;
 	}
@@ -64,8 +55,11 @@ public class Produto implements Persistente {
 	public Long getId() {
 		return id;
 	}
-	public void setId(Long id) {
-		this.id = id;
+	public Boolean getCupom15Off() {
+		return cupom15Off;
+	}
+	public void setCupom15Off(Boolean valor) {
+		this.cupom15Off = java.util.Objects.requireNonNull(valor);
 	}
 	
 }
