@@ -61,5 +61,4 @@ public class Produto {
 	public void setCupom15Off(Boolean valor) {
 		this.cupom15Off = java.util.Objects.requireNonNull(valor);
 	}
-	
 }

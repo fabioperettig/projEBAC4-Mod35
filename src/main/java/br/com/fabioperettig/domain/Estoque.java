@@ -1,24 +1,29 @@
 package br.com.fabioperettig.domain;
 
-import anotacao.ColunaTabela;
-import anotacao.Tabela;
-import anotacao.TipoChave;
-import br.com.fabioperettig.dao.Persistente;
+import jakarta.persistence.*;
 
-@Tabela("TB_ESTOQUE")
-public class Estoque implements Persistente {
-    @ColunaTabela(dbName = "id", setJavaName = "setId")
+@Entity
+@Table(name = "TB_ESTOQUE")
+public class Estoque {
+
+    @Id
+    @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="estoque_seq")
+    @SequenceGenerator(name="estoque_seq", sequenceName="sq_estoque", initialValue = 1, allocationSize = 1)
     private Long id;
-    @TipoChave("getIdProduto")
-    @ColunaTabela(dbName = "id_produto_fk", setJavaName = "setIdProduto")
-    private Long idProduto;
-    @ColunaTabela(dbName = "quantidade", setJavaName = "setQuantidade")
+
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "id_estoque_fk",
+            foreignKey = @ForeignKey(name = "fk_prod_qtd_estoque"),
+            referencedColumnName = "id", nullable = false
+    )
+    private Produto produto;
+
+    @Column(name = "QUANTIDADE", nullable = false)
     private Integer quantidade;
 
+    ///getter_setter
     public Long getId() { return id; }
-    public void setId(Long id) { this.id = id; }
-    public Long getIdProduto() { return idProduto; }
-    public void setIdProduto(Long idProduto) { this.idProduto = idProduto; }
+    public Produto getProduto() { return produto; }
     public Integer getQuantidade() { return quantidade; }
     public void setQuantidade(Integer quantidade) { this.quantidade = quantidade; }
 }

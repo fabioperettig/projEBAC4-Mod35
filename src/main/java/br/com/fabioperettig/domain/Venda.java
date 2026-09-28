@@ -5,11 +5,6 @@ import java.time.Instant;
 import java.util.HashSet;
 import java.util.Optional;
 import java.util.Set;
-
-import anotacao.ColunaTabela;
-import anotacao.Tabela;
-import anotacao.TipoChave;
-import br.com.fabioperettig.dao.Persistente;
 import jakarta.persistence.*;
 
 @Entity
@@ -171,7 +166,4 @@ public class Venda {
 	public void setProdutos(Set<ProdutoQuantidade> produtos) {
 		this.produtos = produtos;
 	}
-	
-	
-	
 }
