@@ -10,17 +10,20 @@ baseado no repositório [projEBAC3-Mod30](https://github.com/fabioperettig/projE
 
 ## EM CONSTRUÇÃO 🚧<br>
 
+Status atuais do projeto:
+
 ☑️ Implementada mudança de estrutura `ConnectionFactory` para `EntityManagerFactory`;<br>
 ☑️ Classe `Cliente` refatorada para **Jakarta Persistence** `@Entity`;<br>
 ☑️ IGenericDao<T,ID> e GenericDao refatorado com Injeção de Dependência aplicada;<br>
 ☑️ Entidades refatoradas em estrutura JPA;<br>
-✅ `IGenericDao` e `GenericDao` refatoradas;<br>
-✅ Interface e Classe `ClienteDao` refatorada;<br>
-✅ Interface e Classe `ProdutoDao` refatorada;<br>
-✅ Interface e Classe `EstoqueDao` refatorada;<br>
-✅ Interface e Classe `EstoqueDao` refatorada;<br>
-✅ Interface e Venda `VendaDao` refatorada;<br>
-✅ `ConnectionFactory` e interface `Persistente` declaradas @Deprecated<br>
+☑️ `IGenericDao` e `GenericDao` refatoradas;<br>
+☑️ Interface e Classe `ClienteDao` refatorada;<br>
+☑️ Interface e Classe `ProdutoDao` refatorada;<br>
+☑️ Interface e Classe `EstoqueDao` refatorada;<br>
+☑️ Interface e Classe `EstoqueDao` refatorada;<br>
+☑️ Interface e Venda `VendaDao` refatorada;<br>
+☑️ `ConnectionFactory` e interface `Persistente` declaradas @Deprecated;<br>
+✅ Classe teste Cliente implementada e testada;<br>
 ----
 
 ### Fabio Peretti Guimarães | Ebac mod 35 | OUT 2026
