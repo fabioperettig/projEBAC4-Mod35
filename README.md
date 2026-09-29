@@ -8,7 +8,7 @@
 Projeto DAO com sistema CRUD, desta vez em Jakarta Persistence API + PostgreSQL,
 baseado no repositório [projEBAC3-Mod30](https://github.com/fabioperettig/projEBAC3-Mod30).
 
-# EM CONSTRUÇÃO 🚧
+## EM CONSTRUÇÃO 🚧<br>
 
 ☑️ Implementada mudança de estrutura `ConnectionFactory` para `EntityManagerFactory`;<br>
 ☑️ Classe `Cliente` refatorada para **Jakarta Persistence** `@Entity`;<br>
