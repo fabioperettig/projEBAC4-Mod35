@@ -13,7 +13,7 @@ import jakarta.persistence.criteria.CriteriaBuilder;
 import jakarta.persistence.criteria.CriteriaQuery;
 import jakarta.persistence.criteria.Root;
 
-public class VendaDAO extends GenericDao<Venda, String> implements IVendaDAO {
+public class VendaDAO extends GenericDao<Venda, Long> implements IVendaDAO {
 
 	public VendaDAO(Class<Venda> persistenteClass) {
 		super(persistenteClass);

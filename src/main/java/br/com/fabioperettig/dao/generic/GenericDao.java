@@ -1,14 +1,12 @@
 package br.com.fabioperettig.dao.generic;
 
 import br.com.fabioperettig.config.EmFactorySingleton;
-import br.com.fabioperettig.dao.Persistente;
 import br.com.fabioperettig.exceptions.DAOException;
 import br.com.fabioperettig.exceptions.MaisDeUmRegistroException;
 import br.com.fabioperettig.exceptions.TableException;
 import br.com.fabioperettig.exceptions.TipoChaveNaoEncontradaException;
 import jakarta.persistence.EntityManager;
 
-import java.io.Serializable;
 import java.util.Collection;
 import java.util.List;
 
@@ -63,12 +61,11 @@ public class GenericDao<T,ID> implements IGenericDao<T,ID> {
     public T consultar(ID id) throws MaisDeUmRegistroException, TableException, DAOException {
 
         EntityManager em = EmFactorySingleton.getEntityManager();
-
-        T entity = em.find(this.persistenteClass, id);
-        em.getTransaction().commit();
-        em.close();
-
-        return entity;
+        try {
+            return em.find(this.persistenteClass, id);
+        } finally {
+            em.close();
+        }
     }
 
     @Override
