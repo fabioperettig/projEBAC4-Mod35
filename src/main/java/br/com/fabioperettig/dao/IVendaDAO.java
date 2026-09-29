@@ -5,7 +5,7 @@ import br.com.fabioperettig.domain.Venda;
 import br.com.fabioperettig.exceptions.DAOException;
 import br.com.fabioperettig.exceptions.TipoChaveNaoEncontradaException;
 
-public interface IVendaDAO extends IGenericDao<Venda, String> {
+public interface IVendaDAO extends IGenericDao<Venda, Long> {
 
 	public void finalizarVenda(Venda venda) throws TipoChaveNaoEncontradaException, DAOException;
 	public void cancelarVenda(Venda venda) throws TipoChaveNaoEncontradaException, DAOException;

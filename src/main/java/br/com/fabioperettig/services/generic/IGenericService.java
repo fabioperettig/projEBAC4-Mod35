@@ -1,18 +1,16 @@
 package br.com.fabioperettig.services.generic;
 
-import java.io.Serializable;
-import java.util.Collection;
-
-import br.com.fabioperettig.dao.Persistente;
 import br.com.fabioperettig.exceptions.DAOException;
+import br.com.fabioperettig.exceptions.MaisDeUmRegistroException;
+import br.com.fabioperettig.exceptions.TableException;
 import br.com.fabioperettig.exceptions.TipoChaveNaoEncontradaException;
 
-public interface IGenericService <T extends Persistente, E extends Serializable> {
+import java.util.Collection;
 
-    public Boolean cadastrar(T entity) throws TipoChaveNaoEncontradaException, DAOException;
-    public void excluir(E valor) throws DAOException;
-    public void alterar(T entity) throws TipoChaveNaoEncontradaException, DAOException;
-    public T consultar(E valor) throws DAOException;
+public interface IGenericService <T, ID> {
+    public T cadastrar(T entity) throws TipoChaveNaoEncontradaException, DAOException;
+    public void excluir(T entity) throws DAOException;
+    public T alterar(T entity) throws TipoChaveNaoEncontradaException, DAOException;
+    public T consultar(ID id) throws DAOException, MaisDeUmRegistroException, TableException;
     public Collection<T> buscarTodos() throws DAOException;
-
 }

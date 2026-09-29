@@ -8,7 +8,6 @@ import br.com.fabioperettig.exceptions.TipoChaveNaoEncontradaException;
 import java.util.Collection;
 
 public interface IGenericDao<T, ID> {
-
     public T cadastrar(T entity) throws TipoChaveNaoEncontradaException, DAOException;
     public void excluir(T entity) throws DAOException;
     public T alterar(T entity) throws TipoChaveNaoEncontradaException, DAOException;

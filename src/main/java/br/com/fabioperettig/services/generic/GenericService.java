@@ -10,38 +10,32 @@ import br.com.fabioperettig.exceptions.MaisDeUmRegistroException;
 import br.com.fabioperettig.exceptions.TableException;
 import br.com.fabioperettig.exceptions.TipoChaveNaoEncontradaException;
 
-public abstract class GenericService<T extends Persistente, E extends Serializable> 
-	implements IGenericService<T, E> {
+public abstract class GenericService<T, ID> implements IGenericService<T, ID> {
 	
-	protected IGenericDao<T,E> dao;
+	protected IGenericDao<T,ID> dao;
 	
-	public GenericService(IGenericDao<T,E> dao) {
+	public GenericService(IGenericDao<T,ID> dao) {
 		this.dao = dao;
 	}
 
 	@Override
-	public Boolean cadastrar(T entity) throws TipoChaveNaoEncontradaException, DAOException {
+	public T cadastrar(T entity) throws TipoChaveNaoEncontradaException, DAOException {
 		return this.dao.cadastrar(entity);
 	}
 
 	@Override
-	public void excluir(E valor) throws DAOException {
-		this.dao.excluir(valor);
+	public void excluir(T entity) throws DAOException {
+		this.dao.excluir(entity);
 	}
 
 	@Override
-	public void alterar(T entity) throws TipoChaveNaoEncontradaException, DAOException {
-		this.dao.alterar(entity);
+	public T alterar(T entity) throws TipoChaveNaoEncontradaException, DAOException {
+		return this.dao.alterar(entity);
 	}
 
 	@Override
-	public T consultar(E valor) throws DAOException {
-		try {
+	public T consultar(ID valor) throws MaisDeUmRegistroException, TableException, DAOException {
 			return this.dao.consultar(valor);
-		} catch (MaisDeUmRegistroException | TableException e) {
-			e.printStackTrace();
-		}
-		return null;
 	}
 
 	@Override

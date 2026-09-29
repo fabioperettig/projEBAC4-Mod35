@@ -11,9 +11,4 @@ public class ProdutoService extends GenericService<Produto, String> implements I
 	public ProdutoService(IProdutoDAO dao) {
 		super(dao);
 	}
-
-    @Override
-    public Boolean cadastrar(Produto produto, Integer quantidadeInicial) throws DAOException {
-        return ((IProdutoDAO) dao).cadastrar(produto, quantidadeInicial);
-    }
 }

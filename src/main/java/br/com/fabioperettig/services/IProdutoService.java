@@ -7,6 +7,4 @@ import br.com.fabioperettig.services.generic.IGenericService;
 
 public interface IProdutoService extends IGenericService<Produto, String> {
 
-    Boolean cadastrar(Produto produto, Integer quantidadeInicial) throws DAOException;
-
 }
