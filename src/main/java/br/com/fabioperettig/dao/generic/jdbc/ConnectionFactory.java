@@ -6,6 +6,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.nio.charset.StandardCharsets;
 
+@Deprecated
 public class ConnectionFactory {
     private static Connection connection;
     private static final Dotenv ENV = Dotenv.configure().ignoreIfMissing().load();

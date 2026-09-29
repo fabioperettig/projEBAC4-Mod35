@@ -9,4 +9,5 @@ public interface IVendaDAO extends IGenericDao<Venda, String> {
 
 	public void finalizarVenda(Venda venda) throws TipoChaveNaoEncontradaException, DAOException;
 	public void cancelarVenda(Venda venda) throws TipoChaveNaoEncontradaException, DAOException;
+	public Venda consultarCollectionCriteria(String codigo);
 }

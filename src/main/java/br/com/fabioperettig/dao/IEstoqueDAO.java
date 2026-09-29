@@ -5,5 +5,5 @@ import br.com.fabioperettig.domain.Estoque;
 import br.com.fabioperettig.exceptions.DAOException;
 
 public interface IEstoqueDAO extends IGenericDao<Estoque, Long> {
-    void adicionar(Long idProduto, Integer quantidade) throws DAOException;
+    void adicionar(String codigoProduto, Integer quantidade) throws DAOException;
 }

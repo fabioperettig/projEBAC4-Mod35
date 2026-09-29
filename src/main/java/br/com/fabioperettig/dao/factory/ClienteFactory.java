@@ -9,7 +9,6 @@ public class ClienteFactory {
 
 	public static Cliente convert(ResultSet rs) throws SQLException {
 		Cliente cliente = new Cliente();
-		cliente.setId(rs.getLong("ID_CLIENTE"));
 		cliente.setNome(rs.getString(("NOME")));
 		cliente.setCpf(rs.getLong(("CPF")));
 		cliente.setTel(rs.getLong(("TEL")));
@@ -17,9 +16,6 @@ public class ClienteFactory {
 		cliente.setNumero(rs.getInt(("NUMERO")));
 		cliente.setCidade(rs.getString(("CIDADE")));
 		cliente.setEstado(rs.getString(("ESTADO")));
-
-		///NOVO CAMPO
-		cliente.setAtivo(rs.getBoolean("ATIVO"));
 
 		return cliente;
 	}

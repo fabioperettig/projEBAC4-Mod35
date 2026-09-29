@@ -12,7 +12,6 @@ public class ProdutoQuantidadeFactory {
 		Produto prod = ProdutoFactory.convert(rs);
 		ProdutoQuantidade prodQ = new ProdutoQuantidade();
 		prodQ.setProduto(prod);
-		prodQ.setId(rs.getLong("ID"));
 		prodQ.setQuantidade(rs.getInt("QUANTIDADE"));
 		prodQ.setValorTotal(rs.getBigDecimal("VALOR_TOTAL"));
 		return prodQ;
