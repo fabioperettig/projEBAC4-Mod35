@@ -5,6 +5,7 @@ import java.util.Collection;
 
 import br.com.fabioperettig.domain.Produto;
 
+@Deprecated
 public class ProdutoDaoMock implements IProdutoDAO {
 
 	@Override
@@ -22,9 +23,9 @@ public class ProdutoDaoMock implements IProdutoDAO {
 	}
 
 	@Override
-	public Produto consultar(String codigo) {
+	public Produto consultar(Long id) {
 		Produto produto = new Produto();
-		produto.setCodigo(codigo);
+//		produto.setCodigo(codigo);
 		return produto;
 	}
 

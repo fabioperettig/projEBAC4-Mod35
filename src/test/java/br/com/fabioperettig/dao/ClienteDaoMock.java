@@ -2,14 +2,10 @@ package br.com.fabioperettig.dao;
 
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.List;
 
 import br.com.fabioperettig.domain.Cliente;
-import br.com.fabioperettig.exceptions.DAOException;
-import br.com.fabioperettig.exceptions.MaisDeUmRegistroException;
-import br.com.fabioperettig.exceptions.TableException;
-import br.com.fabioperettig.exceptions.TipoChaveNaoEncontradaException;
 
+@Deprecated
 public class ClienteDaoMock implements IClienteDAO {
 
 	@Override

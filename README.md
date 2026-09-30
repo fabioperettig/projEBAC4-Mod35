@@ -8,22 +8,27 @@
 Projeto DAO com sistema CRUD, desta vez em Jakarta Persistence API + PostgreSQL,
 baseado no repositório [projEBAC3-Mod30](https://github.com/fabioperettig/projEBAC3-Mod30).
 
-## EM CONSTRUÇÃO 🚧<br>
+## EM CONSTRUÇÃO 🚧
 
-Status atuais do projeto:
+| Status atuais do projeto                                                           |    |
+|------------------------------------------------------------------------------------|----|
+| Implementada mudança de estrutura `ConnectionFactory` para `EntityManagerFactory`  | ☑️ |
+| Classe `Cliente` refatorada para **Jakarta Persistence** `@Entity`                 | ☑️ |
+| **IGenericDao<T, ID>** e GenericDao refatorado com Injeção de Dependência aplicada | ☑️ |
+| Entidades refatoradas em estrutura JPA                                             | ☑️ |
+| `IGenericDao` e `GenericDao` refatoradas                                           | ☑️ |
+| Interface e Classe `ClienteDao` refatorada                                         | ☑️ |
+| Interface e Classe `ProdutoDao` refatorada                                         | ☑️ |
+| Interface e Classe `EstoqueDao` refatorada                                         | ☑️ |
+| Interface e Classe `EstoqueDao` refatorada                                         | ☑️ |
+| Interface e Venda `VendaDao` refatorada                                            | ☑️ |
+| `ConnectionFactory` e interface `Persistente` declaradas @Deprecated               | ☑️ |
+| Classe teste Cliente implementada e testada                                        | ☑️ |
+| Classe teste Produto implementada e testada                                        | ☑️ |
 
-☑️ Implementada mudança de estrutura `ConnectionFactory` para `EntityManagerFactory`;<br>
-☑️ Classe `Cliente` refatorada para **Jakarta Persistence** `@Entity`;<br>
-☑️ IGenericDao<T,ID> e GenericDao refatorado com Injeção de Dependência aplicada;<br>
-☑️ Entidades refatoradas em estrutura JPA;<br>
-☑️ `IGenericDao` e `GenericDao` refatoradas;<br>
-☑️ Interface e Classe `ClienteDao` refatorada;<br>
-☑️ Interface e Classe `ProdutoDao` refatorada;<br>
-☑️ Interface e Classe `EstoqueDao` refatorada;<br>
-☑️ Interface e Classe `EstoqueDao` refatorada;<br>
-☑️ Interface e Venda `VendaDao` refatorada;<br>
-☑️ `ConnectionFactory` e interface `Persistente` declaradas @Deprecated;<br>
-✅ Classe teste Cliente implementada e testada;<br>
+## Métodos extras:
+- Buscar Produto por código <String> - CRITÉRIA
+
 ----
 
 ### Fabio Peretti Guimarães | Ebac mod 35 | OUT 2026

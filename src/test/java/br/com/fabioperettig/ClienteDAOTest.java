@@ -48,7 +48,6 @@ public class ClienteDAOTest {
 
 		Cliente cResult = clienteDAO.consultar(cliente.getId());
 		Assertions.assertNotNull(cResult);
-
 	}
 
 	@Test

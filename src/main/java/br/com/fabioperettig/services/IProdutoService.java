@@ -5,6 +5,6 @@ import br.com.fabioperettig.exceptions.DAOException;
 import br.com.fabioperettig.domain.Produto;
 import br.com.fabioperettig.services.generic.IGenericService;
 
-public interface IProdutoService extends IGenericService<Produto, String> {
+public interface IProdutoService extends IGenericService<Produto, Long> {
 
 }
