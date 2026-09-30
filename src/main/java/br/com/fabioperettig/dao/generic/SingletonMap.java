@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /// Classe Singleton que garante que o MAP será único em toda a vita da aplicação.
+@Deprecated
 public class SingletonMap {
 
     private static SingletonMap singletonMap;

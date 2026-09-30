@@ -6,6 +6,7 @@ import java.sql.SQLException;
 import br.com.fabioperettig.domain.Produto;
 import br.com.fabioperettig.domain.ProdutoQuantidade;
 
+@Deprecated
 public class ProdutoQuantidadeFactory {
 
 	public static ProdutoQuantidade convert(ResultSet rs) throws SQLException {

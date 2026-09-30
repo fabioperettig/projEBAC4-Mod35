@@ -5,6 +5,7 @@ import java.sql.SQLException;
 
 import br.com.fabioperettig.domain.Produto;
 
+@Deprecated
 public class ProdutoFactory {
 
 	

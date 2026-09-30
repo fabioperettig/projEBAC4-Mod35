@@ -7,6 +7,7 @@ import br.com.fabioperettig.domain.Cliente;
 import br.com.fabioperettig.domain.Venda;
 import br.com.fabioperettig.domain.Venda.Status;
 
+@Deprecated
 public class VendaFactory {
 
 	public static Venda convert(ResultSet rs) throws SQLException {

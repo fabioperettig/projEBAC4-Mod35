@@ -33,4 +33,9 @@ public class ProdutoDaoMock implements IProdutoDAO {
 	public Collection<Produto> buscarTodos() {
 		return new ArrayList<>();
 	}
+
+	@Override
+	public Produto consultaPorCodigo(String codigo) {
+		return null;
+	}
 }

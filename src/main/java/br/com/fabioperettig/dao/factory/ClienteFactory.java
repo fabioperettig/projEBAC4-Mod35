@@ -5,6 +5,7 @@ import java.sql.SQLException;
 
 import br.com.fabioperettig.domain.Cliente;
 
+@Deprecated
 public class ClienteFactory {
 
 	public static Cliente convert(ResultSet rs) throws SQLException {

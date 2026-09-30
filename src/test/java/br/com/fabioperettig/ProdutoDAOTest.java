@@ -89,6 +89,36 @@ public class ProdutoDAOTest {
         Assertions.assertEquals(0, esperado.compareTo(atualizado.getValor()));
     }
 
+    @Test
+    public void buscarTodos() throws DAOException, TipoChaveNaoEncontradaException {
+        criarProduto("PROD0001");
+        criarProduto("PROD0002");
+        produtoDAO.cadastrar(criarProduto("PROD0001"));
+        produtoDAO.cadastrar(criarProduto("PROD0002"));
+        Collection<Produto> list = produtoDAO.buscarTodos();
+        Assertions.assertNotNull(list);
+        Assertions.assertEquals(2, list.size());
+
+        for (Produto produto : list) {
+            this.produtoDAO.excluir(produto);
+        }
+
+        list = produtoDAO.buscarTodos();
+        Assertions.assertNotNull(list);
+        Assertions.assertEquals(0, list.size());
+    }
+
+    @Test
+    public void buscarProdutoCriteria() throws DAOException, TipoChaveNaoEncontradaException {
+        Produto produto = criarProduto("PROD999");
+        produtoDAO.cadastrar(produto);
+        Assertions.assertNotNull(produto);
+
+        Produto cResult = produtoDAO.consultaPorCodigo(produto.getCodigo());
+        Assertions.assertNotNull(cResult);
+        Assertions.assertEquals(cResult.getCodigo(), produto.getCodigo());
+    }
+
     private Produto criarProduto(String codigo) throws TipoChaveNaoEncontradaException, DAOException {
         Produto produto = new Produto();
         produto.setCodigo(codigo);

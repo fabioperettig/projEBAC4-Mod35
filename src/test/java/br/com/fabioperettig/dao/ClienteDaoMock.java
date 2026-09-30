@@ -34,4 +34,9 @@ public class ClienteDaoMock implements IClienteDAO {
 	public Collection<Cliente> buscarTodos() {
         return new ArrayList<>();
 	}
+
+	@Override
+	public Cliente consultaPorCPF(Long cpf) {
+		return null;
+	}
 }

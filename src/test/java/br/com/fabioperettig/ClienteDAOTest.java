@@ -115,6 +115,18 @@ public class ClienteDAOTest {
         assertEquals(0, list1.size());
 	}
 
+	@Test
+	public void buscarClienteCriteria() throws DAOException, TipoChaveNaoEncontradaException {
+		Cliente cliente = criarCliente();
+		cliente.setCpf(12345678901L);
+		clienteDAO.cadastrar(cliente);
+		Assertions.assertNotNull(cliente);
+
+		Cliente cResult = clienteDAO.consultaPorCPF(cliente.getCpf());
+		Assertions.assertNotNull(cResult);
+		Assertions.assertEquals(cResult.getCpf(), cliente.getCpf());
+	}
+
 	private Cliente criarCliente() {
 		Cliente cliente = new Cliente();
 		cliente.setCpf(random.nextLong());

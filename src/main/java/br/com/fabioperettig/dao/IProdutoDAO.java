@@ -5,4 +5,6 @@ import br.com.fabioperettig.domain.Produto;
 
 public interface IProdutoDAO extends IGenericDao<Produto, Long> {
 
+    public Produto consultaPorCodigo(String codigo);
+
 }
