@@ -6,6 +6,7 @@ import org.junit.platform.suite.api.Suite;
 @Suite
 @SelectClasses({
         ClienteDAOTest.class,
-        ProdutoDAOTest.class
+        ProdutoDAOTest.class,
+        VendaDAOTest.class,
 })
 public class AllTests { }

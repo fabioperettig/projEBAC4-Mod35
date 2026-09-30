@@ -72,6 +72,7 @@ public class Venda {
 			///criar factory para produtoQuantidade
 			ProdutoQuantidade prod = new ProdutoQuantidade();
 			prod.setProduto(produto);
+			prod.setVenda(this);
 			prod.adicionar(quantidade);
 			produtos.add(prod);
 		}

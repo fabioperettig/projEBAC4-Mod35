@@ -15,8 +15,8 @@ import jakarta.persistence.criteria.Root;
 
 public class VendaDAO extends GenericDao<Venda, Long> implements IVendaDAO {
 
-	public VendaDAO(Class<Venda> persistenteClass) {
-		super(persistenteClass);
+	public VendaDAO() {
+		super(Venda.class);
 	}
 
 	@Override
@@ -33,9 +33,9 @@ public class VendaDAO extends GenericDao<Venda, Long> implements IVendaDAO {
 	@Override
 	public Venda cadastrar(Venda entity) throws TipoChaveNaoEncontradaException, DAOException {
 
+		EntityManager em = EmFactorySingleton.getEntityManager();
 		try {
-
-			EntityManager em = EmFactorySingleton.getEntityManager();
+			em.getTransaction().begin();
 			entity.getProdutos().forEach(prd -> {
 				Produto produto = em.merge(prd.getProduto());
 				prd.setProduto(produto);
@@ -48,7 +48,12 @@ public class VendaDAO extends GenericDao<Venda, Long> implements IVendaDAO {
 			return entity;
 
 		} catch (Exception e) {
+			if (em.getTransaction().isActive()) {
+				em.getTransaction().rollback();
+			}
 			throw new DAOException("NÃO FOI POSSÍVEL SALVAR VENDA ", e);
+		} finally {
+			em.close();
 		}
 
 	}
@@ -56,18 +61,19 @@ public class VendaDAO extends GenericDao<Venda, Long> implements IVendaDAO {
 	@Override
 	public Venda consultarCollectionCriteria(String codigo) {
 
-		EntityManager em = EmFactorySingleton.getEntityManager();
+		try (EntityManager em = EmFactorySingleton.getEntityManager()) {
 
-		CriteriaBuilder cBuilder = em.getCriteriaBuilder();
-		CriteriaQuery<Venda> query = cBuilder.createQuery(Venda.class);
+			CriteriaBuilder cBuilder = em.getCriteriaBuilder();
+			CriteriaQuery<Venda> query = cBuilder.createQuery(Venda.class);
 
-		Root<Venda> root = query.from(Venda.class);
-		root.fetch("cliente");
-		root.fetch("produtos");
-		query.select(root).where(cBuilder.equal(root.get("codigo"), codigo));
+			Root<Venda> root = query.from(Venda.class);
+			root.fetch("cliente");
+			root.fetch("produtos");
+			query.select(root).where(cBuilder.equal(root.get("codigo"), codigo));
 
-		TypedQuery<Venda> tpQuery = em.createQuery(query);
+			TypedQuery<Venda> tpQuery = em.createQuery(query);
 
-		return tpQuery.getSingleResult();
+			return tpQuery.getSingleResult();
+		}
 	}
 }

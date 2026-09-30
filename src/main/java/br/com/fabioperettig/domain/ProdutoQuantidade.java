@@ -12,7 +12,7 @@ public class ProdutoQuantidade {
 	@SequenceGenerator(name = "prod_qtd_seq", sequenceName = "sq_prod_qtd", initialValue = 1, allocationSize = 1)
 	private Long id;
 
-	@ManyToOne(cascade = CascadeType.ALL)
+	@ManyToOne
 	private Produto produto;
 	
 	@Column(name = "QUANTIDADE", nullable = false)
@@ -21,7 +21,7 @@ public class ProdutoQuantidade {
 	@Column(name = "VALOR_TOTAL", nullable = false)
 	private BigDecimal valorTotal;
 
-	@ManyToOne(cascade = CascadeType.ALL)
+	@ManyToOne
 	@JoinColumn(name = "id_venda_fk",
 			foreignKey = @ForeignKey(name = "fk_prod_qtd_venda"),
 			referencedColumnName = "id", nullable = false
@@ -47,6 +47,13 @@ public class ProdutoQuantidade {
 	}
 
 	///getter_setter
+	public Venda getVenda() {
+		return venda;
+	}
+	public void setVenda(Venda venda) {
+		this.venda = venda;
+	}
+
 	public Produto getProduto() {
 		return produto;
 	}

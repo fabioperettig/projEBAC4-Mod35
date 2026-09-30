@@ -25,9 +25,11 @@ baseado no repositório [projEBAC3-Mod30](https://github.com/fabioperettig/projE
 | `ConnectionFactory` e interface `Persistente` declaradas @Deprecated               | ☑️ |
 | Classe teste Cliente implementada e testada                                        | ☑️ |
 | Classe teste Produto implementada e testada                                        | ☑️ |
+| Classe teste Venda implementada e testada                                          | ☑️ |
 
 ## Métodos extras:
 - Buscar Produto por código <String> - CRITÉRIA
+- Buscar Cliente por cpf - JPQL
 
 ----
 
